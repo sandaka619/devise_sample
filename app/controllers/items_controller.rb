@@ -1,12 +1,12 @@
 class ItemsController < ApplicationController
   before_action :move_to_index, except: :index
-
+  
   def index
     @items = Item.all
   end
 
   def new
-   @item = Item.new
+    @item = Item.new
   end
 
   def create
@@ -17,11 +17,9 @@ class ItemsController < ApplicationController
     redirect_to action: :index unless user_signed_in?
   end
 
-
   private
 
   def item_params
     params.require(:item).permit(:name, :price)
   end
-
 end
